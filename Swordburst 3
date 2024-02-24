@@ -89,7 +89,7 @@ end
 
 tab:Dropdown{
     Name = "เลือกมอนเตอร์",
-    StartingText = "Select...",
+    StartingText = "เลือกก...",
     Description = nil,
     Items = mobs,
     Callback = function(item)
@@ -108,7 +108,7 @@ tab:Toggle{
 
 tab:Dropdown{
     Name = "เลือกบอส",
-    StartingText = "Select...",
+    StartingText = "เลือกก...",
     Description = nil,
     Items = bosses,
     Callback = function(item)
@@ -126,9 +126,9 @@ tab:Toggle{
 }
 
 tab:Toggle{
-    Name = "ฆ่ารอบๆ",
+    Name = "ฆ่ามอนรอบๆ",
     StartingState = false,
-    Description = "doesnt work with killaura for players",
+    Description = "ฆ่ามอนรอบๆใช้ไม่ได้กับผู้เล่น",
     Callback = function(state)
         swordburst["killaura"] = state
     end
@@ -137,7 +137,7 @@ tab:Toggle{
 tab:Toggle{
     Name = "ฆ่าผู้เล่นรอบๆ",
     StartingState = false,
-    Description = "turn on pvp and doesnt work with killaura ",
+    Description = "เปิด pvp ก่อน และไม่สามารถใช้กับฆ่ามอนรอบๆได้ ",
     Callback = function(state)
         swordburst["killauraplr"] = state
     end
@@ -154,7 +154,7 @@ tab:Toggle{
 
 tab:Dropdown{
     Name = "เลือกเควส",
-    StartingText = "Select...",
+    StartingText = "เลือกก...",
     Description = nil,
     Items = quests,
     Callback = function(item)
@@ -173,7 +173,7 @@ tab:Toggle{
 
 tab:Dropdown{
     Name = "เลือกแร่ที่จะขุด",
-    StartingText = "Select...",
+    StartingText = "เลือกก...",
     Description = nil,
     Items = mines,
     Callback = function(item)
@@ -192,8 +192,8 @@ tab:Toggle{
 }
 
 teleporttab:Dropdown{
-    Name = "Select Waystones",
-    StartingText = "Select...",
+    Name = "เลือก Waystones",
+    StartingText = "เลือกก...",
     Description = nil,
     Items = waystone,
     Callback = function(item)
@@ -202,7 +202,7 @@ teleporttab:Dropdown{
 }
 
 teleporttab:Button{
-    Name = "Teleport Waystones",
+    Name = "เทเลพอร์ต Waystones",
     Description = nil,
     Callback = function()
         if waystones then
@@ -379,61 +379,3 @@ task.spawn(function()
     end
 end)
 
----CloseUi
-
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local TextButton = Instance.new("TextButton")
-local Frame2 = Instance.new("Frame")
-local TextButton2 = Instance.new("TextButton")
-
-ScreenGui.Parent = game.CoreGui
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(0,255,0)
-Frame.Position = UDim2.new(0, 0, 0.40, 0)
-Frame.Size = UDim2.new(0, 90, 0, 30)
-Frame.Active = true
-Frame.Draggable = true
-
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(0,255,0)
-TextButton.Size = UDim2.new(0, 90, 0, 30)
-TextButton.Font = Enum.Font.GothamBold
-TextButton.Text = "เปิด"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextSize = 22.000
-TextButton.MouseButton1Click:connect(function()
-Frame.Visible = false
-Frame2.Visible = true    
-local vim = game:service("VirtualInputManager")
-vim:SendKeyEvent(true, "Delete", false, game)
-end)
-
-Frame2.Parent = ScreenGui
-Frame2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Frame2.Position = UDim2.new(0, 0, 0.40, 0)
-Frame2.Size = UDim2.new(0, 90, 0, 30)
-Frame2.Active = true
-Frame2.Draggable = true
-
-TextButton2.Parent = Frame2
-TextButton2.BackgroundColor3 = Color3.fromRGB(255,0,0)
-TextButton2.Size = UDim2.new(0, 90, 0, 30)
-TextButton2.Font = Enum.Font.GothamBold
-TextButton2.Text = "ปิด"
-TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton2.TextSize = 22.000
-TextButton2.MouseButton1Click:connect(function()
-    Frame2.Visible = false
-    Frame.Visible = true
-local vim = game:service("VirtualInputManager")
-vim:SendKeyEvent(true, "Delete", false, game)
-end)
-
-
-
-
-
-Frame.Parent.Active = true
-Frame.Parent.Draggable = true
